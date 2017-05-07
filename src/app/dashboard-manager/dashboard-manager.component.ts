@@ -2,8 +2,8 @@ import { Component, ComponentRef, ViewChild, ViewContainerRef,
          AfterViewInit, OnInit, OnDestroy, OnChanges, 
          ComponentFactory} from '@angular/core';
 
-import { IData, DynamicTypeBuilderService } from './dynamic-type-builder.service';
-import { DynamicTemplateBuilderService } from './dynamic-template-builder.service';
+import { IData, ComponentBuilderService } from './component-builder.service';
+import { TemplateBuilderService } from './template-builder.service';
 
 @Component({
   selector: 'dashboard-manager',
@@ -20,7 +20,8 @@ export class DashboardManagerComponent implements OnInit, AfterViewInit, OnDestr
     componentRef: ComponentRef<IData>;
     isViewInitialized = false;
 
-    constructor(private typeBuilder: DynamicTypeBuilderService, private templateBuilder: DynamicTemplateBuilderService) { }
+    constructor(private typeBuilder: ComponentBuilderService, 
+                private templateBuilder: TemplateBuilderService) { }
 
     ngOnInit() { }
 

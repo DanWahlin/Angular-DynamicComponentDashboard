@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export class DynamicTemplateBuilderService {
+export class TemplateBuilderService {
 
     public getTemplate(){
     

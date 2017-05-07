@@ -9,7 +9,7 @@ export interface IData {
 }
 
 @Injectable()
-export class DynamicTypeBuilderService {
+export class ComponentBuilderService {
 
     constructor(private compiler: JitCompiler) { }
 
