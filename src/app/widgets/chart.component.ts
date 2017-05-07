@@ -12,6 +12,7 @@ import { Http } from '@angular/http';
 export class ChartComponent {
     @Input() type: string;
     @Input() dataUrl: string;
+    @Input() position: number;
     data: any;
 
     constructor() {
@@ -27,7 +28,6 @@ export class ChartComponent {
         let min = Math.ceil(0);
         let max = Math.floor(this.datasets.length);
         let val = Math.floor(Math.random() * (max - min)) + min;
-        console.log(val);
         return val;
     }
 

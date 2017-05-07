@@ -25,7 +25,7 @@ export class ComponentBuilderService {
             });
         }
 
-        let type = this.createNewComponent(template);
+        let type = this.createComponent(template);
         let module = this.createComponentModule(type);
 
         return new Promise((resolve) => {
@@ -44,34 +44,48 @@ export class ComponentBuilderService {
         });
     }
 
-    createNewComponent(template: string) {
+    createComponent(template: string) {
         @Component({
             selector: 'dynamic-component',
             template: template,
         })
         class DynamicComponent implements IData {
             @Input() data: any;
-            dragWidget: any;
+            dragTarget: any;
 
             dragStart(event: any, dragId: string) {
-                this.dragWidget = event.target.parentElement;
-                console.log('dragId: ' + dragId);
+                //Easier to find target by ID vs. grabbing event target
+                //since user may drag a child of the widget div
+                this.dragTarget = document.getElementById('widget_' + dragId);
+                this.dragTarget.classList.add('widget-drag-background');
             }
 
-            drop(event: any, dropId: number) {
-                let dropTarget = event.target.parentElement;
-                let dropTargetParent = dropTarget.parentElement;
-                let dragTargetParent = this.dragWidget.parentElement;
+            drop(event: any, dropId: string) {
+                //Easier to find target by ID vs. grabbing event target
+                //since user may drag a child of the widget div
+                let dropTarget = document.getElementById('widget_' + dropId);
+                let dropTargetWidget = dropTarget.querySelector('[position]');
+                let dropTargetWidgetPosition = dropTargetWidget.getAttribute('position');
 
-                dragTargetParent.removeChild(this.dragWidget);
+                let dragTargetWidget = this.dragTarget.querySelector('[position]');
+                let dragTargetWidgetPosition = dragTargetWidget.getAttribute('position');
+
+                let dropTargetParent = dropTarget.parentElement;
+                let dragTargetParent = this.dragTarget.parentElement;
+
+                //Swap positions
+                dragTargetParent.removeChild(this.dragTarget);
                 dropTargetParent.removeChild(dropTarget);
                 dragTargetParent.appendChild(dropTarget);
-                dropTargetParent.appendChild(this.dragWidget);
-                console.log('dropId: ' + dropId);
+                dropTargetParent.appendChild(this.dragTarget);
+                dropTargetWidget.setAttribute('position', dragTargetWidgetPosition);
+                dragTargetWidget.setAttribute('position', dropTargetWidgetPosition);
+
             }
 
-            dragEnd(event: any, dragId: number) {
-                this.dragWidget = null;
+            dragEnd(event: any, dragId: string) {
+                this.dragTarget.classList.remove('widget-drag-background');
+                this.dragTarget = null;
             }
         };
 

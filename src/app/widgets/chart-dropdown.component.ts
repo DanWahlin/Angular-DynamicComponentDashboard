@@ -22,6 +22,7 @@ export class ChartDropdownComponent {
     @Input() type: string;
     @Input() dataUrl: string;
     @Input() optionsText: string;
+    @Input() position: number;
     data: IData = {
         options: [],
         results: null
@@ -52,7 +53,6 @@ export class ChartDropdownComponent {
         let min = Math.ceil(0);
         let max = Math.floor(this.datasets.length);
         let val = Math.floor(Math.random() * (max - min)) + min;
-        console.log(val);
         return val;
     }
 

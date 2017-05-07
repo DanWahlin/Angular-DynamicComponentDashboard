@@ -36,6 +36,10 @@ main {
     font-size: 60px;
 }
 
+.widget-drag-background {
+    background-color: #efefef;
+}
+
 .option-text {
     margin-left: 5px;
 }

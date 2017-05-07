@@ -18,6 +18,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class KeyValueComponent implements OnInit {
     @Input() dataUrl: string;
     data: any = [{ key: "166 Expenses", value: 15674 }];
+    @Input() position: number;
+
     constructor() { }
 
     ngOnInit() { 
