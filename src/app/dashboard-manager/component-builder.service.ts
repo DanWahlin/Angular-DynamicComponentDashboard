@@ -1,4 +1,4 @@
-import { Component, ComponentFactory, NgModule, Input, Injectable } from '@angular/core';
+import { Component, ComponentFactory, NgModule, Input, Injectable, ElementRef } from '@angular/core';
 import { JitCompiler } from '@angular/compiler';
 
 import { PanelModule } from 'primeng/components/panel/panel';
@@ -51,19 +51,26 @@ export class ComponentBuilderService {
         })
         class DynamicComponent implements IData {
             @Input() data: any;
+            dragTargetId: string;
             dragTarget: any;
+
+            constructor(private elementRef: ElementRef) { }
 
             dragStart(event: any, dragId: string) {
                 //Easier to find target by ID vs. grabbing event target
                 //since user may drag a child of the widget div
-                this.dragTarget = document.getElementById('widget_' + dragId);
+                this.dragTargetId = dragId;
+                this.dragTarget = this.elementRef.nativeElement.querySelector('[id="widget_' + dragId + '"]');
                 this.dragTarget.classList.add('widget-drag-background');
             }
 
             drop(event: any, dropId: string) {
+                //If dropping onto self then exit function
+                if (this.dragTargetId === dropId) return;
+
                 //Easier to find target by ID vs. grabbing event target
                 //since user may drag a child of the widget div
-                let dropTarget = document.getElementById('widget_' + dropId);
+                let dropTarget = this.elementRef.nativeElement.querySelector('[id="widget_' + dropId + '"]');
                 let dropTargetWidget = dropTarget.querySelector('[position]');
                 let dropTargetWidgetPosition = dropTargetWidget.getAttribute('position');
 
