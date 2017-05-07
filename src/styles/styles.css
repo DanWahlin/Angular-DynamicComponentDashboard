@@ -1,0 +1,54 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.logo {
+    margin-top: 10px;
+    width: 200px;
+}
+
+.app-title {
+    font-size: 20px;
+    color: black;
+}
+
+main {
+    position: relative;
+    padding-top: 60px;
+}
+
+.widget-container {
+    margin: 20px 0px;
+}
+
+.widget {
+    border: 1px solid #ccc;
+    height: 375px;
+}
+
+.widget-header {
+    background-color: #ccc;
+    padding-left: 5px;
+}
+
+.widget-large-value {
+    font-size: 60px;
+}
+
+.option-text {
+    margin-left: 5px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+@media (min-width: 20px) and (max-width: 767px) and (orientation: portrait) {
+    .widget {
+        height: 225px;
+    }
+}
