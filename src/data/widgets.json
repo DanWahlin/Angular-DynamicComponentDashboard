@@ -5,10 +5,10 @@
         "description": "....",
         "componentName": "chart-dropdown",
         "properties": [
-        { "name": "optionsText", "value": "Cost Center" },
-        { "name": "dataUrl", "value": "http://somesite/api" },
-        { "name": "type", "value": "doughnut" },
-        { "name": "position", "value": 1 }
+            { "name": "optionsText", "value": "Cost Center" },
+            { "name": "dataUrl", "value": "/data/chart-data-with-options.json" },
+            { "name": "type", "value": "doughnut" },
+            { "name": "position", "value": 1 }
         ]
     },
     { 
@@ -17,9 +17,9 @@
         "description": "....",
         "componentName": "chart",
         "properties": [
-        { "name": "dataUrl", "value": "http://somesite/api" },
-        { "name": "type", "value": "line" },
-        { "name": "position", "value": 2 }
+            { "name": "dataUrl", "value": "/data/chart-data.json" },
+            { "name": "type", "value": "line" },
+            { "name": "position", "value": 2 }
         ]
     },
     { 
@@ -28,9 +28,9 @@
         "description": "....",
         "componentName": "chart",
         "properties": [
-        { "name": "dataUrl", "value": "http://somesite/api" },
-        { "name": "type", "value": "line" },
-        { "name": "position", "value": 3 }
+            { "name": "dataUrl", "value": "/data/chart-data.json" },
+            { "name": "type", "value": "line" },
+            { "name": "position", "value": 3 }
         ]
     },
     { 
@@ -39,8 +39,8 @@
         "description": "....",
         "componentName": "key-value",
         "properties": [
-        { "name": "dataUrl", "value": "http://somesite/api" },
-        { "name": "position", "value": 4 }
+            { "name": "dataUrl", "value": "/data/key-value-data.json" },
+            { "name": "position", "value": 4 }
         ]
     }
 ]

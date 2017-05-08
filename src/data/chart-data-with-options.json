@@ -1,0 +1,24 @@
+{
+    "options": [
+            { "key": "160", "value": "160"},
+            { "key": "166", "value": "166"},
+            { "key": "137", "value": "137"}
+    ],
+    "results": {
+        "labels": ["A","B","C"],
+        "datasets": [
+            {
+                "data": [300, 50, 100],
+                "backgroundColor": [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ],
+                "hoverBackgroundColor": [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]    
+    }
+}

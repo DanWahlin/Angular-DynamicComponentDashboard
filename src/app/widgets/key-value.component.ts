@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { WidgetBaseComponent } from './widget-base.component';
+import { DataService } from './data.service';
+
 @Component({
     moduleId: module.id,
     selector: 'key-value',
     template: `
-        <div>
+        <div *ngIf="data">
             <div *ngFor="let keyVal of data">
                 <div class="text-center">
                     <h2>{{ keyVal.key }}</h2>
@@ -15,15 +18,17 @@ import { Component, Input, OnInit } from '@angular/core';
         </div>
     `
 })
-export class KeyValueComponent implements OnInit {
-    @Input() dataUrl: string;
-    data: any = [{ key: "166 Expenses", value: 15674 }];
-    @Input() position: number;
+export class KeyValueComponent extends WidgetBaseComponent implements OnInit {
 
-    constructor() { }
+    constructor(private dataService: DataService) { 
+        super();
+    }
 
     ngOnInit() { 
-
+        this.dataService.getData(this.dataUrl)
+            .subscribe((data: any) => {
+                this.data = data;
+            });
     }
 
 }
