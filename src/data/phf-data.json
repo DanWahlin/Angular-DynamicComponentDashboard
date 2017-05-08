@@ -1,0 +1,10 @@
+{
+    "imageUrl": "",
+    "icon": "<i class='fa fa-user key-value-widget-icon' aria-hidden='true'></i>",
+    "results": [
+        { 
+            "key": "Number of Clients in PHF", 
+            "value": 10
+        }
+    ]
+}

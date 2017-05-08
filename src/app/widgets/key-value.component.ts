@@ -1,18 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { WidgetBaseComponent } from './widget-base.component';
+import { EventBusService } from '../eventbus/eventbus.service';
 import { DataService } from './data.service';
 
 @Component({
     moduleId: module.id,
     selector: 'key-value',
     template: `
-        <div *ngIf="data">
-            <div *ngFor="let keyVal of data">
-                <div class="text-center">
-                    <h2>{{ keyVal.key }}</h2>
-                    <br />
-                    <h2 class="widget-large-value">{{ keyVal.value }}</h2>
+        <div *ngIf="data" class="key-value-widget">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <span *ngIf="data.icon" [innerHTML]="data.icon"></span>
+                    <img *ngIf="data.imageUrl" [src]="data.imageUrl" />
+                </div>
+                <div class="col-md-8 key-value-widget-content">
+                    <div *ngFor="let keyVal of data.results">
+                        <div class="">
+                            <h2>{{ keyVal.key }}</h2>
+                            <br />
+                            <h2 class="widget-large-value">{{ keyVal.value }}</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -20,7 +29,7 @@ import { DataService } from './data.service';
 })
 export class KeyValueComponent extends WidgetBaseComponent implements OnInit {
 
-    constructor(private dataService: DataService) { 
+    constructor(public dataService: DataService, public eventbus: EventBusService) { 
         super();
     }
 

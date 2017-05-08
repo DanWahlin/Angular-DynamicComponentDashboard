@@ -1,13 +1,14 @@
 import { Component, ComponentFactory, NgModule, Input, Injectable, ElementRef } from '@angular/core';
 import { JitCompiler } from '@angular/compiler';
 
+import { EventBusService } from '../eventbus/eventbus.service';
 import { IData } from './interfaces';
 import { WidgetsModule } from '../widgets/widgets.module';
 
 @Injectable()
 export class DashboardComponentService {
 
-    constructor(private compiler: JitCompiler) { }
+    constructor(private compiler: JitCompiler, private eventbus: EventBusService) { }
 
     private factoryCache: { [templateKey: string]: ComponentFactory<IData> } = {};
 

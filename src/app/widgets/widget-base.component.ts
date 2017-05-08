@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { EventBusService } from '../eventbus/eventbus.service';
+import { DataService } from './data.service';
+
 @Component({
     moduleId: module.id
 })
@@ -15,6 +18,8 @@ export class WidgetBaseComponent implements OnInit {
     }
 
     set data(data: any) {
+        //Handle case where data is passed directly to component as a URL encoded string
+        //Decode it and convert into an object
         if (typeof(data) === 'string') {
             data = JSON.parse(decodeURIComponent(data));
         }

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { DataService } from './data.service';
 import { WidgetBaseComponent } from './widget-base.component';
+import { EventBusService } from '../eventbus/eventbus.service';
+import { DataService } from './data.service';
 
 @Component({
     selector: 'chart',
@@ -19,7 +20,7 @@ export class ChartComponent extends WidgetBaseComponent implements OnInit {
     data: any;
     datasets: any[];
 
-    constructor(private dataService: DataService) { 
+    constructor(public dataService: DataService, public eventbus: EventBusService) { 
         super();
     }
 

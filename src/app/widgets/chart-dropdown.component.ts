@@ -2,8 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { IData } from './interfaces';
-import { DataService } from './data.service';
 import { WidgetBaseComponent } from './widget-base.component';
+import { EventBusService, EmitEvent, Events } from '../eventbus/eventbus.service';
+import { DataService } from './data.service';
 
 @Component({
     selector: 'chart-dropdown',
@@ -24,7 +25,7 @@ export class ChartDropdownComponent extends WidgetBaseComponent implements OnIni
     @Input() type: string;
     @Input() optionsText: string;
 
-    constructor(private dataService: DataService) { 
+    constructor(public dataService: DataService, public eventbus: EventBusService) { 
         super();
      }
 
@@ -40,6 +41,14 @@ export class ChartDropdownComponent extends WidgetBaseComponent implements OnIni
     changed(val: number) {
         //Call dataUrl and build up post data to send to server
         //When response comes back update the data property
+        let changeData = {
+            username: '',
+            widgetId: 1,
+            optionValue: 2
+        };
 
+        this.dataService.saveSettings(changeData).subscribe((status: boolean) => {
+
+        });
     }
 }

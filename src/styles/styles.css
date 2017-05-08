@@ -51,6 +51,19 @@ main {
     background-color: #efefef;
 }
 
+.key-value-widget-icon {
+    margin-top: 75px;
+    font-size: 100px;
+}
+
+.key-value-widget {
+    padding: 50px 10px;
+}
+
+.key-value-widget-content {
+    padding: 50px 10px;
+}
+
 .option-text {
     margin-left: 5px;
 }

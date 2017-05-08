@@ -23,6 +23,16 @@
         ]
     },
     { 
+        "id": 5,
+        "headerText": "People in PHF",
+        "description": "....",
+        "componentName": "key-value",
+        "properties": [
+            { "name": "dataUrl", "value": "/data/phf-data.json" },
+            { "name": "position", "value": 3 }
+        ]
+    },
+    { 
         "id": 4,
         "headerText": "HR Staff",
         "description": "....",
@@ -30,7 +40,7 @@
         "properties": [
             { "name": "dataUrl", "value": "/data/chart-data.json" },
             { "name": "type", "value": "line" },
-            { "name": "position", "value": 3 }
+            { "name": "position", "value": 4 }
         ]
     },
     { 
@@ -40,8 +50,8 @@
         "componentName": "key-value",
         "properties": [
             { "name": "dataUrl", "value": "/data/key-value-data.json" },
-            { "name": "position", "value": 4 },
-            { "name": "data", "value": "%5B%20%7B%20%20%22key%22%3A%20%22137%20Expenses%22%2C%20%22value%22%3A%20565674%20%7D%20%5D" }
+            { "name": "position", "value": 5 },
+            { "name": "data", "value": "%7B%0D%0A%20%22icon%22%3A%20%22%3Ci%20class%3D%27fa%20fa-usd%20key-value-widget-icon%27%20aria-hidden%3D%27true%27%3E%3C%2Fi%3E%22%2C%0D%0A%20%20%22results%22%3A%20%5B%0D%0A%20%20%20%7B%20%22key%22%3A%20%22137%20Expenses%22%2C%20%22value%22%3A%20576879%20%7D%0D%0A%20%20%5D%0D%0A%7D" }
         ]
     }
 ]
