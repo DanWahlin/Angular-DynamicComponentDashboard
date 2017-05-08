@@ -29,10 +29,12 @@ export class ChartDropdownComponent extends WidgetBaseComponent implements OnIni
      }
 
     ngOnInit() {
-        this.dataService.getData(this.dataUrl)
-            .subscribe((chartData: any) => {
-                this.data = chartData;
-            });
+        if (!this.data && this.dataUrl) {
+            this.dataService.getData(this.dataUrl)
+                .subscribe((chartData: any) => {
+                    this.data = chartData;
+                });
+        }
     }
 
     changed(val: number) {

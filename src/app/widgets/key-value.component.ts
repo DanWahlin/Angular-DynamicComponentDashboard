@@ -12,7 +12,7 @@ import { DataService } from './data.service';
                 <div class="text-center">
                     <h2>{{ keyVal.key }}</h2>
                     <br />
-                    <h1 class="widget-large-value">{{ keyVal.value }}</h1>
+                    <h2 class="widget-large-value">{{ keyVal.value }}</h2>
                 </div>
             </div>
         </div>
@@ -25,10 +25,13 @@ export class KeyValueComponent extends WidgetBaseComponent implements OnInit {
     }
 
     ngOnInit() { 
-        this.dataService.getData(this.dataUrl)
-            .subscribe((data: any) => {
-                this.data = data;
-            });
+        if (!this.data && this.dataUrl) {
+            this.dataService.getData(this.dataUrl)
+                .subscribe((data: any) => {
+                    this.data = data;
+                });
+        }
+
     }
 
 }

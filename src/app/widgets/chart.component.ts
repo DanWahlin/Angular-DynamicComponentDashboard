@@ -24,12 +24,14 @@ export class ChartComponent extends WidgetBaseComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.dataService.getData(this.dataUrl)
-            .subscribe((chartData: any) => {
-                this.datasets = chartData;
-                let val = this.getRandomNumber();
-                this.renderChart(val);
-            });
+        if (!this.data && this.dataUrl) {
+            this.dataService.getData(this.dataUrl)
+                .subscribe((chartData: any) => {
+                    this.datasets = chartData;
+                    let val = this.getRandomNumber();
+                    this.renderChart(val);
+                });
+        }
     }
 
     getRandomNumber() {

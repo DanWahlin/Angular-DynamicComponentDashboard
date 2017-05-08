@@ -40,7 +40,8 @@
         "componentName": "key-value",
         "properties": [
             { "name": "dataUrl", "value": "/data/key-value-data.json" },
-            { "name": "position", "value": 4 }
+            { "name": "position", "value": 4 },
+            { "name": "data", "value": "%5B%20%7B%20%20%22key%22%3A%20%22137%20Expenses%22%2C%20%22value%22%3A%20565674%20%7D%20%5D" }
         ]
     }
 ]

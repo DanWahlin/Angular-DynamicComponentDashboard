@@ -21,7 +21,6 @@ export class TemplateBuilderService {
 
       let html = `<div class="container">
                       <div class="row">`;
-
       for (let widget of widgets) {
         html += `
                 <div class="col-sm-1 col-md-6 col-lg-6 widget-container">
