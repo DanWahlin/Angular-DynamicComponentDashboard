@@ -3,6 +3,11 @@ body {
     padding-bottom: 20px;
 }
 
+header.navbar {
+    background-color: #fff;
+    border: 1px solid #efefef;
+}
+
 .logo {
     margin-top: 10px;
     width: 200px;
@@ -25,6 +30,12 @@ main {
 .widget {
     border: 1px solid #ccc;
     height: 375px;
+    transition: transform 0.5s;
+    position: relative;
+}
+
+.widget:hover {
+    transform: scale(1.02);
 }
 
 .widget-header {
@@ -43,6 +54,31 @@ main {
 .option-text {
     margin-left: 5px;
 }
+
+.fade-in {
+    animation: fade-in-animation 1s ease-in;
+}
+
+@keyframes fade-in-animation {
+    from {
+        opacity: 0;
+    }
+ 
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out-animation {
+    from {
+        opacity: 1;
+    }
+ 
+    to {
+        opacity: 0;
+    }
+}
+
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,

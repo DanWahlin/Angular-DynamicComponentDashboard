@@ -1,15 +1,11 @@
 import { Component, ComponentFactory, NgModule, Input, Injectable, ElementRef } from '@angular/core';
 import { JitCompiler } from '@angular/compiler';
 
-import { PanelModule } from 'primeng/components/panel/panel';
+import { IData } from './interfaces';
 import { WidgetsModule } from '../widgets/widgets.module';
 
-export interface IData {
-    data: any;
-}
-
 @Injectable()
-export class ComponentBuilderService {
+export class DashboardComponentService {
 
     constructor(private compiler: JitCompiler) { }
 
@@ -49,10 +45,11 @@ export class ComponentBuilderService {
             selector: 'dynamic-component',
             template: template,
         })
-        class DynamicComponent implements IData {
+        class DashboardComponent implements IData {
             @Input() data: any;
             dragTargetId: string;
-            dragTarget: any;
+            dragTarget: HTMLElement;
+            dropTarget: HTMLElement;
 
             constructor(private elementRef: ElementRef) { }
 
@@ -70,20 +67,23 @@ export class ComponentBuilderService {
 
                 //Easier to find target by ID vs. grabbing event target
                 //since user may drag a child of the widget div
-                let dropTarget = this.elementRef.nativeElement.querySelector('[id="widget_' + dropId + '"]');
-                let dropTargetWidget = dropTarget.querySelector('[position]');
+                this.dropTarget = this.elementRef.nativeElement.querySelector('[id="widget_' + dropId + '"]');
+                let dropTargetWidget = this.dropTarget.querySelector('[position]');
                 let dropTargetWidgetPosition = dropTargetWidget.getAttribute('position');
 
                 let dragTargetWidget = this.dragTarget.querySelector('[position]');
                 let dragTargetWidgetPosition = dragTargetWidget.getAttribute('position');
 
-                let dropTargetParent = dropTarget.parentElement;
+                let dropTargetParent = this.dropTarget.parentElement;
                 let dragTargetParent = this.dragTarget.parentElement;
 
                 //Swap positions
+                let dragOffset = dragTargetParent.offsetLeft;
+                let dropOffset = dropTargetParent.offsetLeft;
+
                 dragTargetParent.removeChild(this.dragTarget);
-                dropTargetParent.removeChild(dropTarget);
-                dragTargetParent.appendChild(dropTarget);
+                dropTargetParent.removeChild(this.dropTarget);
+                dragTargetParent.appendChild(this.dropTarget);
                 dropTargetParent.appendChild(this.dragTarget);
                 dropTargetWidget.setAttribute('position', dragTargetWidgetPosition);
                 dragTargetWidget.setAttribute('position', dropTargetWidgetPosition);
@@ -93,15 +93,16 @@ export class ComponentBuilderService {
             dragEnd(event: any, dragId: string) {
                 this.dragTarget.classList.remove('widget-drag-background');
                 this.dragTarget = null;
+                this.dropTarget = null;
             }
         };
 
-        return DynamicComponent;
+        return DashboardComponent;
     }
 
     createComponentModule(componentType: any) {
         @NgModule({
-            imports: [PanelModule, WidgetsModule],
+            imports: [WidgetsModule],
             declarations: [componentType],
         })
         class DynamicComponentModule { }

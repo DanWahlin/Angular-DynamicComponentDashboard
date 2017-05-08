@@ -2,7 +2,8 @@ import { Component, ComponentRef, ViewChild, ViewContainerRef,
          AfterViewInit, OnInit, OnDestroy, OnChanges, 
          ComponentFactory} from '@angular/core';
 
-import { IData, ComponentBuilderService } from './component-builder.service';
+import { IData } from './interfaces';
+import { DashboardComponentService } from './dashboard-component.service';
 import { TemplateBuilderService } from './template-builder.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class DashboardManagerComponent implements OnInit, AfterViewInit, OnDestr
     componentRef: ComponentRef<IData>;
     isViewInitialized = false;
 
-    constructor(private typeBuilder: ComponentBuilderService, 
+    constructor(private componentService: DashboardComponentService, 
                 private templateBuilder: TemplateBuilderService) { }
 
     ngOnInit() { }
@@ -39,16 +40,15 @@ export class DashboardManagerComponent implements OnInit, AfterViewInit, OnDestr
       
       this.destroy();
       
-      var template = this.templateBuilder.getTemplate();
-
-      // here we get Factory (just compiled or from cache)
-      this.typeBuilder
-          .createComponentFactory(template)
-          .then((factory: ComponentFactory<IData>) =>
-            {
-                this.componentRef = this.dynamicComponentTarget.createComponent(factory);
-                //this.componentRef.instance.data = this.data;
-            });
+      this.templateBuilder.getTemplate().subscribe((template: string) => {
+        this.componentService
+            .createComponentFactory(template)
+            .then((factory: ComponentFactory<IData>) =>
+                {
+                    this.componentRef = this.dynamicComponentTarget.createComponent(factory);
+                    //this.componentRef.instance.data = this.data;
+                });
+      });
     }
 
     destroy() {
