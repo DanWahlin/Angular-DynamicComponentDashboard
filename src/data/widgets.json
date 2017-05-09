@@ -53,5 +53,16 @@
             { "name": "position", "value": 5 },
             { "name": "data", "value": "%7B%0D%0A%20%22icon%22%3A%20%22%3Ci%20class%3D%27fa%20fa-usd%20key-value-widget-icon%27%20aria-hidden%3D%27true%27%3E%3C%2Fi%3E%22%2C%0D%0A%20%20%22results%22%3A%20%5B%0D%0A%20%20%20%7B%20%22key%22%3A%20%22137%20Expenses%22%2C%20%22value%22%3A%20576879%20%7D%0D%0A%20%20%5D%0D%0A%7D" }
         ]
+    },
+    { 
+        "id": 4,
+        "headerText": "Hospital Staff",
+        "description": "....",
+        "componentName": "chart",
+        "properties": [
+            { "name": "dataUrl", "value": "/data/chart-data.json" },
+            { "name": "type", "value": "line" },
+            { "name": "position", "value": 6 }
+        ]
     }
 ]

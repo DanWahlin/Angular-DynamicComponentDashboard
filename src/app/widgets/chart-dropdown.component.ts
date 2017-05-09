@@ -39,8 +39,7 @@ export class ChartDropdownComponent extends WidgetBaseComponent implements OnIni
     }
 
     changed(val: number) {
-        //Call dataUrl and build up post data to send to server
-        //When response comes back update the data property
+        //Call dataUrl and build up post data to send to server for saving settings
         let changeData = {
             username: '',
             widgetId: 1,
@@ -50,5 +49,8 @@ export class ChartDropdownComponent extends WidgetBaseComponent implements OnIni
         this.dataService.saveSettings(changeData).subscribe((status: boolean) => {
 
         });
+
+        //Use val to call server and grab fresh data
+        
     }
 }
