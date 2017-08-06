@@ -19,33 +19,30 @@ export class TemplateBuilderService {
       
       let widgets = res.json();
 
-      let html = `<div class="container">
-                      <div class="row">`;
+      // let html = `<div class="container">
+      //                 <div class="row">`;
+      let html = `
+        <div class="grid" id="dashboardGrid">
+      `;
       for (let widget of widgets) {
-        html += `
-                <div class="col-sm-1 col-md-6 col-lg-6 widget-container">
-                    <div id="widget_${widget.id}" 
-                        class="widget fade-in" 
-                        (onDrop)="drop($event, ${widget.id})" 
-                        (onDragStart)="dragStart($event, ${widget.id})" 
-                        (onDragEnd)="dragEnd($event, ${widget.id})"
-                        pDraggable="widget" pDroppable="widget">
-                      <div class="widget-header"  title="${widget.description}">${widget.headerText}</div>
-                        <${widget.componentName} `;
+          html += `
+              <div id="widget_${widget.id}" class="grid-item grid-item--width2">
+                <div class="widget-header" title="${widget.description}">${widget.headerText}</div>
+                  <${widget.componentName}
+          `;
 
         //generate attributes for tag
         for (let prop of widget.properties) {
           html += prop.name + '="' + prop.value + '"';
         }
 
-        html += ` ></${widget.componentName}>
-                    </div>
-                </div>
-          `;
+        html += `
+            ></${widget.componentName}>
+          </div>
+        `;
       }
 
       html += `
-            </div>
           </div>
         `;
 

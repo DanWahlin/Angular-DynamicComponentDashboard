@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 
 import { IData } from './interfaces';
 import { WidgetBaseComponent } from './widget-base.component';
-import { EventBusService, EmitEvent, Events } from '../eventbus/eventbus.service';
+import { EventBusService, EmitEvent, Events } from '../core/eventbus.service';
 import { DataService } from './data.service';
 
 @Component({

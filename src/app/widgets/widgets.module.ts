@@ -4,7 +4,6 @@ import { CommonModule }  from "@angular/common";
 import { FormsModule }   from "@angular/forms";
 import { HttpModule }   from "@angular/http";
 
-import { DragDropModule } from 'primeng/components/dragdrop/dragdrop';
 import { ChartModule }  from 'primeng/components/chart/chart';
 import { ChartComponent } from './chart.component';
 import { ChartDropdownComponent } from './chart-dropdown.component';
@@ -16,8 +15,7 @@ import { DataService } from './data.service';
       CommonModule,
       FormsModule,
       HttpModule,
-      ChartModule,
-      DragDropModule
+      ChartModule
   ],
   declarations: [ ChartComponent, ChartDropdownComponent, KeyValueComponent ],
   exports: [
@@ -25,8 +23,7 @@ import { DataService } from './data.service';
       ChartComponent,
       ChartDropdownComponent,
       KeyValueComponent,
-      FormsModule,
-      DragDropModule
+      FormsModule
   ],
   providers: [ DataService ]
 })

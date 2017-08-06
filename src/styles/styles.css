@@ -23,6 +23,30 @@ main {
     padding-top: 60px;
 }
 
+/* Dashboard grid styles for Packery */
+
+.grid {
+  max-width: 1200px;
+}
+
+.grid-item { width: 50%; }
+
+.grid-item--width2 { width: 45%; height:300px; }
+
+.grid-item.is-dragging,
+.grid-item.is-positioning-post-drag {
+  background: #0F76C9;
+  z-index: 2;
+}
+
+.packery-drop-placeholder {
+  outline: 3px dashed hsla(0, 0%, 0%, 0.5);
+  outline-offset: -6px;
+  transition: transform 0.2s;
+}
+
+/* Widget Styles */
+
 .widget-container {
     margin: 20px 0px;
 }
@@ -47,21 +71,13 @@ main {
     font-size: 40px;
 }
 
-.widget-drag-background {
-    background-color: #efefef;
-}
-
 .key-value-widget-icon {
     margin-top: 75px;
     font-size: 100px;
 }
 
 .key-value-widget {
-    padding: 50px 10px;
-}
-
-.key-value-widget-content {
-    padding: 50px 10px;
+    padding: 30px 10px;
 }
 
 .option-text {

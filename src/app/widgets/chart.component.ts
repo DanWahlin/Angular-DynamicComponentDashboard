@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { WidgetBaseComponent } from './widget-base.component';
-import { EventBusService } from '../eventbus/eventbus.service';
+import { EventBusService } from '../core/eventbus.service';
 import { DataService } from './data.service';
 
 @Component({

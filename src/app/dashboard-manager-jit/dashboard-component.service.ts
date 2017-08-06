@@ -1,7 +1,7 @@
 import { Component, ComponentFactory, NgModule, Input, Injectable, ElementRef } from '@angular/core';
 import { JitCompiler } from '@angular/compiler';
 
-import { EventBusService } from '../eventbus/eventbus.service';
+import { EventBusService } from '../core/eventbus.service';
 import { IData } from './interfaces';
 import { WidgetsModule } from '../widgets/widgets.module';
 

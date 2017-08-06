@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { WidgetBaseComponent } from './widget-base.component';
-import { EventBusService } from '../eventbus/eventbus.service';
+import { EventBusService } from '../core/eventbus.service';
 import { DataService } from './data.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { DataService } from './data.service';
                     <span *ngIf="data.icon" [innerHTML]="data.icon"></span>
                     <img *ngIf="data.imageUrl" [src]="data.imageUrl" />
                 </div>
-                <div class="col-md-8 key-value-widget-content">
+                <div class="col-md-8">
                     <div *ngFor="let keyVal of data.results">
                         <div class="">
                             <h2>{{ keyVal.key }}</h2>
