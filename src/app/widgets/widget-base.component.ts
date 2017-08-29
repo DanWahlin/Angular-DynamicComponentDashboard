@@ -4,7 +4,7 @@ import { EventBusService } from '../core/eventbus.service';
 import { DataService } from './data.service';
 
 @Component({
-    moduleId: module.id
+
 })
 export class WidgetBaseComponent implements OnInit {
 

@@ -5,7 +5,6 @@ import { EventBusService } from '../core/eventbus.service';
 import { DataService } from './data.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'key-value',
     template: `
         <div *ngIf="data" class="key-value-widget">
